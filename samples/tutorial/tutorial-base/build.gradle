@@ -1,10 +1,11 @@
 plugins {
   id 'com.android.application'
   id 'kotlin-android'
+  id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 android {
-  compileSdk = 34
+  compileSdk = 36
 
   defaultConfig {
     applicationId "workflow.tutorial"
@@ -31,5 +32,17 @@ dependencies {
   implementation deps.kotlin.stdlib
   implementation deps.material
   implementation deps.workflow.core_android
+  implementation deps.workflow.config_android
+  implementation deps.workflow.compose
+  implementation deps.workflow.compose_tooling
+
+  implementation platform(deps.compose.bom)
+  implementation deps.compose.ui
+  implementation deps.compose.ui_tooling_preview
+  implementation deps.compose.material3
+  implementation deps.compose.activity
+  implementation deps.compose.viewmodel
+  debugImplementation deps.compose.ui_tooling
+
   implementation project(':tutorial-views')
 }

@@ -1,12 +1,15 @@
 package workflow.tutorial
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 
-class TutorialActivity : AppCompatActivity() {
+class TutorialActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(workflow.tutorial.views.R.layout.welcome_view)
+    setContent {
+      App()
+    }
   }
 }
