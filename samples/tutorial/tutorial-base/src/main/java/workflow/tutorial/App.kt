@@ -1,8 +1,11 @@
 package workflow.tutorial
 
+import android.util.Log
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import com.squareup.workflow1.RuntimeConfigOptions
 import com.squareup.workflow1.WorkflowExperimentalRuntime
 import com.squareup.workflow1.mapRendering
@@ -18,12 +21,18 @@ private val viewEnvironment = ViewEnvironment.EMPTY.withComposeInteropSupport()
 @Composable
 fun App() {
   MaterialTheme {
-    val rendering by WelcomeWorkflow.mapRendering { it.withEnvironment(viewEnvironment) }
+    val workflow = remember {
+      RootNavigationWorkflow.mapRendering { it.withEnvironment(viewEnvironment) }
+    }
+    val rendering by workflow
       .renderAsState(
         props = Unit,
         runtimeConfig = RuntimeConfigOptions.ALL,
         onOutput = {}
       )
+    LaunchedEffect(rendering) {
+      Log.i("navigate", rendering.content.toString())
+    }
     WorkflowRendering(rendering)
   }
 }
