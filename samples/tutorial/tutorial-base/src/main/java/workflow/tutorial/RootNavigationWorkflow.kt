@@ -36,7 +36,7 @@ object RootNavigationWorkflow : StatefulWorkflow<Unit, State, Nothing, BackStack
           props = TodoListWorkflow.ListProps(renderState.username),
           handler = { logOut() }
         )
-        listOf(welcomeScreen, todoBackStack).toBackStackScreen()
+        (listOf(welcomeScreen) + todoBackStack).toBackStackScreen()
       }
     }
   }

@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,6 +24,7 @@ data class TodoListScreen(
   val username: String,
   val todoTitles: List<String>,
   val onBackPressed: () -> Unit,
+  val onRowPressed: (Int) -> Unit,
 ) : ComposeScreen {
 
   @Composable
@@ -62,10 +63,10 @@ private fun TodoListScreenContent(
           .fillMaxWidth()
           .weight(1f)
       ) {
-        items(screen.todoTitles) { item ->
+        itemsIndexed(screen.todoTitles) { i, item ->
           TodoListItem(
             text = item,
-            onClick = { /*onItemTapped(item)*/ }
+            onClick = { screen.onRowPressed(i) }
           )
         }
       }
