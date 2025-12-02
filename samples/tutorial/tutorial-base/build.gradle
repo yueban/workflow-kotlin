@@ -45,4 +45,7 @@ dependencies {
   debugImplementation deps.compose.ui_tooling
 
   implementation project(':tutorial-views')
+
+  testImplementation deps.kotlin.test
+  testImplementation deps.workflow.testing
 }
