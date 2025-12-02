@@ -6,7 +6,6 @@ import com.squareup.workflow1.ui.TextController
 import workflow.tutorial.TodoEditWorkflow.Output
 import workflow.tutorial.TodoEditWorkflow.Props
 import workflow.tutorial.TodoEditWorkflow.State
-import workflow.tutorial.TodoListWorkflow.TodoModel
 
 object TodoEditWorkflow : StatefulWorkflow<Props, State, Output, TodoEditScreen>() {
   data class Props(

@@ -25,6 +25,7 @@ data class TodoListScreen(
   val todoTitles: List<String>,
   val onBackPressed: () -> Unit,
   val onRowPressed: (Int) -> Unit,
+  val onAddPressed: () -> Unit,
 ) : ComposeScreen {
 
   @Composable
@@ -73,7 +74,7 @@ private fun TodoListScreenContent(
     }
 
     Button(
-      onClick = {},// TODO: onAddTapped
+      onClick = screen.onAddPressed,
       modifier = Modifier
         .align(Alignment.BottomEnd)
         .padding(16.dp)

@@ -32,8 +32,8 @@ object RootNavigationWorkflow : StatefulWorkflow<Unit, State, Nothing, BackStack
       State.ShowingWelcome -> BackStackScreen(welcomeScreen)
       is State.ShowingTodo -> {
         val todoBackStack = context.renderChild(
-          child = TodoListWorkflow,
-          props = TodoListWorkflow.ListProps(renderState.username),
+          child = TodoNavigationWorkflow,
+          props = TodoNavigationWorkflow.TodoProps(renderState.username),
           handler = { logOut() }
         )
         (listOf(welcomeScreen) + todoBackStack).toBackStackScreen()
